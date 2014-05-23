@@ -3,10 +3,34 @@ html
   head
     meta(charset='utf-8')
     title= title
+    link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet')
     link(href='/css/normalize.css', rel='stylesheet')
     link(href='/css/buttons.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
   body
+    nav.navbar.navbar-default(role='navigation')
+      .container-fluid
+        .navbar-header
+          button(type="button", class="navbar-toggle", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand 8 Bit Adventures
+        if currentUserId
+          ul.nav.navbar-right.navbar-nav
+            li.dropdown
+              a.dropdown-toggle(href='#' data-toggle='dropdown') Settings
+                b.caret
+              ul.dropdown-menu
+                li: a(href='/logout') Log Out
+        else
+          form#loginForm.navbar-form.navbar-right(role='login', action='/login', method='post')
+            .form-group
+              input.form-control(type='email', name='email', autofocus=true, placeholder='Email')
+              input.form-control(type='password', name='password', placeholder='Password')
+              button#auth.btn.btn-default Sign In/Sign Up
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
@@ -14,6 +38,7 @@ html
     script(src='/js/vendor/moment-2.6.0.js')
     script(src='/js/vendor/buttons.js')
     script(src='/js/vendor/traceur.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')
     script(src='/js/es6/compiled/main.js')
