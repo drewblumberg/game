@@ -12,9 +12,10 @@
   function login(e){
     e.preventDefault();
     var formData = $('#loginForm').serialize();
+    var email = $('input[name="email"]').val();
     ajax('/login', 'post', formData, (d,ts,jqxhr)=>{
       $('#loginForm').remove();
-      $('.container-fluid').append('<ul class="nav navbar-right navbar-nav"><li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Settings<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/logout">Log Out</a></li></ul></li></ul>');
+      $('.container-fluid').append('<ul class="nav navbar-right navbar-nav"><li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Settings<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#">' + email + '</a></li><li><a href="/logout">Log Out</a></li></ul></li></ul>');
     }, 'json');
   }
 

@@ -23,6 +23,7 @@ html
               a.dropdown-toggle(href='#' data-toggle='dropdown') Settings
                 b.caret
               ul.dropdown-menu
+                li: a(href="#")= currentUserEmail
                 li: a(href='/logout') Log Out
         else
           form#loginForm.navbar-form.navbar-right(role='login', action='/login', method='post')
